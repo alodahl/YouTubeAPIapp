@@ -9,7 +9,7 @@ function getDataFromApi(searchTerm , callback) {
     data: {
       key: `${key}`,
       q: `${searchTerm} in:name`,
-      per_page: 10,
+      maxResults: 10,
       part: 'snippet'
     },
     dataType: 'json',
@@ -23,7 +23,15 @@ $.ajax(settings);
 
 function renderResult(result) {
   console.log(result);
-  return `<div>${result.snippet.title}</div>`;
+  return `<div><a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank">
+                  <img src="${result.snippet.thumbnails.medium.url}" alt="${result.snippet.description}">
+                  </a>
+                <a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank"><h3>${result.snippet.title}</h3>
+                </a>
+                <a href="https://www.youtube.com/channel/${result.snippet.channelId}" target="_blank">
+                  <h4>by ${result.snippet.channelTitle}</h4>
+                </a>
+          </div>`;
     /*<div>
       <h2>
       <a class="js-result-name" href="${result.html_url}" target="_blank">${result.title}</a>
