@@ -1,12 +1,12 @@
-const mykey = config.API_key;
-console.log(mykey);
+const key = config.API_KEY;
+console.log(key);
 const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 function getDataFromApi(searchTerm , callback) {
 
   const settings = {
     url: YOUTUBE_SEARCH_URL,
-    key: `${mykey}`,
+    key: `${key}`,
     data: {
       q: `${searchTerm} in:name`,
       per_page: 10,
