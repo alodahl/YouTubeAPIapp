@@ -1,5 +1,10 @@
-const key = config.API_KEY;
-console.log(key);
+// After listening for a search term submission,
+// this app returns video thumbnails and details
+// for 12 youtube videos. The thumbnails and details
+// are linked to youtube video and channel pages.
+
+const key = 'AIzaSyC03eeAtrERD9teY5fMnSaAE26CvWO7pnQ';
+
 const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 function getDataFromApi(searchTerm , callback) {
@@ -9,21 +14,21 @@ function getDataFromApi(searchTerm , callback) {
     data: {
       key: `${key}`,
       q: `${searchTerm} in:name`,
-      maxResults: 10,
+      maxResults: 12,
       part: 'snippet'
     },
     dataType: 'json',
     type: 'GET',
     success: callback
   };
-// console.log(settings);
+
 $.ajax(settings);
 }
 
 
 function renderResult(result) {
-  console.log(result);
-  return `<div><a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank">
+console.log(result);
+  return `<div class=videoResult><a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank">
                   <img src="${result.snippet.thumbnails.medium.url}" alt="${result.snippet.description}">
                   </a>
                 <a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank"><h3>${result.snippet.title}</h3>
@@ -32,18 +37,11 @@ function renderResult(result) {
                   <h4>by ${result.snippet.channelTitle}</h4>
                 </a>
           </div>`;
-    /*<div>
-      <h2>
-      <a class="js-result-name" href="${result.html_url}" target="_blank">${result.title}</a>
-      by <a class="js-user-name" href="${result.html_url}" target="_blank">${result.login}</a>
-    </h2>
-      <p>Number of watchers: <span class="js-watchers-count">${result.activity}</span></p>
-
-    </div>*/
   ;
 }
 
 function displaySearchData(data) {
+  $('.js-search-results').html(`<h2>Results:</h2>`);
   const results = data.items.map((item, index) => renderResult(item));
   $('.js-search-results').html(results);
 }
