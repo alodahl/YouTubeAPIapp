@@ -6,8 +6,8 @@ function getDataFromApi(searchTerm , callback) {
 
   const settings = {
     url: YOUTUBE_SEARCH_URL,
-    key: `${key}`,
     data: {
+      key: `${key}`,
       q: `${searchTerm} in:name`,
       per_page: 10,
       part: 'snippet'
@@ -16,13 +16,14 @@ function getDataFromApi(searchTerm , callback) {
     type: 'GET',
     success: callback
   };
-console.log(settings);
+// console.log(settings);
 $.ajax(settings);
 }
 
 
 function renderResult(result) {
-  return `<div>${result}</div>`;
+  console.log(result);
+  return `<div>${result.snippet.title}</div>`;
     /*<div>
       <h2>
       <a class="js-result-name" href="${result.html_url}" target="_blank">${result.title}</a>
