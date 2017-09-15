@@ -22,3 +22,7 @@ form{
 a {
   text-decoration: none;
 }
+
+.js-search-results {
+  text-align: center;
+}
