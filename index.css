@@ -2,6 +2,7 @@ body {
   padding-top: 50px;
   font-family: Quicksand, sans-serif;
 }
+
 .videoResult {
   display: inline-block;
   margin: 20px 20px;
@@ -27,14 +28,12 @@ a {
   text-align: center;
 }
 
-
 .light {
   background-color: white;
   width: 560px;
   height: 315px;
   margin: 250px auto;
   position:relative;
-
 }
 
 .dark {
@@ -44,7 +43,6 @@ a {
   left:0;
   background-color: black;
   position: fixed;
-
 }
 
 .close-button {
