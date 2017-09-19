@@ -1,4 +1,4 @@
-const key = config.API_KEY;
+const key = 'AIzaSyC03eeAtrERD9teY5fMnSaAE26CvWO7pnQ';
 
 const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 
