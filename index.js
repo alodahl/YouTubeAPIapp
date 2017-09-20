@@ -9,7 +9,7 @@ function getDataFromApi(searchTerm , callback) {
     data: {
       key: `${key}`,
       q: `${searchTerm} in:name`,
-      maxResults: 10,
+      maxResults: 12,
       part: 'snippet'
     },
     dataType: 'json',
@@ -21,7 +21,7 @@ function getDataFromApi(searchTerm , callback) {
 
 function renderResult(result) {
   return `<div class="videoResult">
-            <img class="thumbnail" data-id=${result.id.videoId} src="${result.snippet.thumbnails.medium.url}" alt="${result.snippet.description}">
+            <img role="button" class="thumbnail" data-id=${result.id.videoId} src="${result.snippet.thumbnails.medium.url}" alt="Click to watch video: ${result.snippet.title}">
             <a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank">
               <h3>${result.snippet.title}</h3>
             </a>
@@ -34,6 +34,8 @@ function renderResult(result) {
 //render each API result in the returned array with renderResult and place it in the DOM
 function displaySearchData(data) {
   const results = data.items.map((item, index) => renderResult(item));
+  const resultDialog = "<h2>Your search has returned 12 results:</h2>";
+  $('.js-search-results').html(resultDialog);
   $('.js-search-results').html(results);
 }
 
@@ -51,11 +53,17 @@ function waitForClicks() {
     var video  = "https://www.youtube.com/embed/"+videoId; //link to embed the chosen video
     $('#video').attr("src", video);  //place link in the video div
     $('.dark').removeClass("hidden");  //then show the div
+    $('.js-search-results').prop("hidden", true);
+    $('h1').prop("hidden", true);
+    $('form').prop("hidden", true);
   })
 
   $('.close-button').on('click', function(event) {
     $('.dark').addClass("hidden");
     $('#video').attr("src", "");
+    $('.js-search-results').prop("hidden", false);
+    $('h1').prop("hidden", false);
+    $('form').prop("hidden", false);
   })
 }
 
