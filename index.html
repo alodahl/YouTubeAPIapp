@@ -12,23 +12,24 @@
         <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     </head>
     <body>
-      <main>
+      <main role="main" aria-live="assertive">
         <h1>Search for videos on YouTube!</h1>
-          <form action="#" class="js-search-form">
+        <form action="#" class="js-search-form">
             <label for="query">Enter a search term</label>
             <input id="query" type="text" class="js-query">
             <button type="submit">Search</button>
-          </form>
+        </form>
 
 
-          <div class="js-search-results"></div>
+        <div class="js-search-results"></div>
 
-          <div class="dark hidden">
+        <div class="dark hidden">
             <div class="light">
+              <img class="close-button" role="button"
+                   src="http://downloadicons.net/sites/default/files/multiplication-sign-icon-33109.png" alt="click to exit from video viewer">
               <iframe  id="video" width="560" height="315" frameborder="0" allowfullscreen></iframe>
-              <button class="close-button">X</button>
+              <!-- <button name="close-video-viewer" class="close-button">X</button> -->
             </div>
-
           </div>
 
       </main>

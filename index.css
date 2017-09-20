@@ -54,10 +54,20 @@ a {
 
 .close-button {
   position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 20px;
-  height: 20px;
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+}
+
+.close-button:active {
+  color: black;
+  opacity: 50%;
+}
+
+.close-button:hover {
+  color: white;
+  opacity: 50%;
 }
 
 .hidden {
