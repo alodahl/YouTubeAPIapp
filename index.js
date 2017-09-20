@@ -55,6 +55,7 @@ function waitForClicks() {
 
   $('.close-button').on('click', function(event) {
     $('.dark').addClass("hidden");
+    $('#video').attr("src", "");
   })
 }
 
